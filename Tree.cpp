@@ -80,45 +80,44 @@ void Tree::destroy_node(int v, Node* root)
 
 string Tree::inorder(Node* root)
 {
-	string rightS, leftS;
+	string str_right, str_left;
 	if (root->left != NULL)
-		leftS = inorder(root->left);
-	else leftS = "";
+		str_left= inorder(root->left);
+	else str_left = "";
 
 	if (root->right != NULL)
-		rightS = inorder(root->right);
-	else rightS = "";
+		str_right = inorder(root->right);
+	else str_right = "";
 
-	return leftS + " " + to_string(root->value) + " " + rightS;
+	return str_right + " " + to_string(root->value) + " " + str_left;
 }
 	
 string Tree::preorder(Node* root)
 {
-	string rightS, leftS;
+	string str_right, str_left;
 	if (root->left != NULL)
-		leftS = preorder(root->left);
-	else leftS = "";
+		str_left = preorder(root->left);
+	else str_left = "";
 
 	if (root->right != NULL)
-		rightS = preorder(root->right);
-	else rightS = "";
+		str_right = preorder(root->right);
+	else str_right = "";
 
-	return to_string(root->value) + " " + rightS + " " + leftS;
+	return to_string(root->value) + " " + str_right + " " + str_left;
 }
 
 string Tree::postorder(Node* root)
 {
-	string rightS, leftS;
+	string str_right, str_left;
 	if (root->left != NULL)
-		leftS = postorder(root->left);
-	else leftS = "";
+		str_left = postorder(root->left);
+	else str_left = "";
 
 	if (root->right != NULL)
-		rightS = postorder(root->right);
-	else rightS = "";
+		str_right = postorder(root->right);
+	else str_right = "";
 
-	return rightS + " " + to_string(root->value) + " " + leftS;
-}
+	return str_right + " " + str_left + " " + to_string(root->value);
 
 int Tree::countNodes(int countN, Node* root)
 {
@@ -161,15 +160,21 @@ int main()
 	Node* n = new Node();
 	Tree * bTree= new Tree();
 	
-	n->value = 20;
+	n->value = 8;
 	n->left = NULL;
 	n->right = NULL;
 
-	bTree->insert(10,n);
-	bTree->insert(12,n);
-	bTree->insert(5,n);
-	bTree->insert(30,n);
+	bTree->insert(1,n);
+	bTree->insert(2, n);
+	bTree->insert(5, n);
+	bTree->insert(6, n);
+	bTree->insert(7,n);
+	bTree->insert(9,n);
+	bTree->insert(12, n); 
+	bTree->insert(15, n); 
+	bTree->insert(16, n);
 
-	cout << bTree->inorder(n);
+
+	cout << bTree->preorder(n);
 	return 0;
 }
